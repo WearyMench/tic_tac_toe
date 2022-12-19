@@ -7,10 +7,12 @@ const Game = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [xIsNext, setXisNext] = useState(true);
   const winner = calculateWinner(board);
+  const [clase, setclase] = useState("");
 
   const handleClick = (i) => {
     const boardCopy = [...board];
     //if user click an ocupied square or if game is won, return.
+    if (boardCopy[i]) setclase(i);
     if (winner || boardCopy[i]) return;
     //put an X or an O in the clicked square.
     boardCopy[i] = xIsNext ? "X" : "O";
@@ -26,8 +28,8 @@ const Game = () => {
 
   return (
     <>
-      <Board squares={board} onClick={handleClick} />
-      <div className="gamediv">
+      <Board squares={board} onClick={handleClick} clase={clase} win={winner} />
+      <div className="gamediv animate__animated animate__bounceInLeft">
         <p>
           {winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? "X" : "O"}`}
         </p>
