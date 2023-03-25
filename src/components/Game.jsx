@@ -30,6 +30,7 @@ const Game = () => {
     <>
       <Board squares={board} onClick={handleClick} clase={clase} win={winner} />
       <div className="gamediv animate__animated animate__bounceInLeft">
+        <h1>Tic Tac Toe</h1>
         <p>
           {winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? "X" : "O"}`}
         </p>
